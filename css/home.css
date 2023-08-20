@@ -1,0 +1,601 @@
+
+
+body {
+    background: linear-gradient(315deg, rgb(225, 189, 242) 3%, rgb(231, 150, 239) 38%, rgb(231, 76, 194) 68%, rgb(233, 102, 163) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    /* background-image: url('https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-fresh-pink-birthday-promotion-banner-image_173637.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed; */
+    /* background-size: cover; */
+    margin: 0;
+    padding: 0;
+    
+  }
+  @keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+
+
+  .display_container {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin: 20px;
+    flex-wrap: wrap;
+    padding: 2%;
+  }
+  .left-div {
+    width: 30%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .right-div_img{
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+  }
+  .right-div_img > img{
+    box-shadow: rgb(243, 246, 249) 0px 20px 30px -10px;
+    border: 1rem solid #e3d198;
+  border-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    #d0dcb0 6px,
+    #ecf024 15px,
+    transparent 16px,
+    transparent 20px
+  ) 20/1rem;
+  animation: slideInFromright 2s forwards;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+  }
+  @keyframes slideInFromright {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .right-div {
+    width: 68%;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  .left-div_content {
+    width: 68%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  .content {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-size: 16px;
+  }
+  img {
+    width: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    border-radius: 5%;
+    box-shadow: rgb(243, 246, 249) 0px 20px 30px -10px;
+    border: 1rem solid #e3d198;
+  border-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 5px,
+    #f1e1db 6px,
+    #9bf085 15px,
+    transparent 16px,
+    transparent 20px
+  ) 20/1rem;
+  }
+  img:hover{
+    transform: scale(1.15);
+  }
+  .enlarge-image{
+    animation: slideInFromLeft 2s forwards;
+  }
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideInFromright {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+   /* Flex direction column for big screens */
+   /* @media (max-width: 768px) {
+    .display_container{
+      flex-direction: row;
+    }
+    .left-div {
+      width: 100%;
+    }
+    .right-div {
+      width: 100%;
+      margin-top: 20px;
+    }
+  } */
+
+ /* Flex direction row for small screens */
+  @media (max-width: 769px) {
+    .display_container{
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .right-div{
+        width:fit-content;
+    }
+    .left-div{
+        width: 100%;
+        padding-bottom: 3%;
+    }
+    .display_container img{
+      width: 80vw;
+    }
+    .content{
+      width: 80vw;
+      margin: 0;
+    }
+   #icons ,.icon-text{
+    display: none;
+   }
+  }
+  /* Animation effect */
+  .content {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-size: 12px;
+  }
+  .card-content{
+    font-size: 14px;
+  }
+  .upper-row {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .lower-row {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .upper-row .card, .lower-row .card {
+    flex: 0 0 calc(50% - 40px);
+  }
+  h1 {
+    color: rgb(239, 68, 68);
+    font-weight: bolder;
+    text-shadow: #e0ca04 2px 5px 3px;
+  }
+  h3 {
+    color: green;
+  }
+  p {
+    color:rgb(76, 168, 211);
+    font-family: cursive;
+    font-weight: bolder;
+  }
+  .icon {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 0 5px rgba(150, 211, 223, 0.8));
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(1, 86, 70);
+  }
+  .icon i {
+    font-size: 5.7em;
+  }
+  .icon-text {
+    margin-top: 10px;
+    text-decoration: underline;
+  }
+  .card-content {
+    margin-top: 50%;
+  }
+  .animate-card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card:hover {
+    box-shadow: 0 0 20px rgba(235, 230, 230, 0.3);
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+
+
+/* .enlarge-image {
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .enlarge-image:hover {
+    transform: scale(1.2);
+    z-index: 1;
+  } */
+
+
+#btn{
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: 0.4s;
+    box-shadow: 0 9px #999;
+    border-radius:10px;
+}
+#btn:hover{ 
+    background-color: #72d776;
+color: white;
+font-weight: bolder;
+border-radius: 30px 20px 30px 20px;}
+
+#btn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  #loopingAudio{
+    display: none;
+  }
+
+  @import url(https://fonts.googleapis.com/css?family=Montserrat:500);
+
+:root {
+    /* Base font size */
+    font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+
+.image-container {
+    max-width: 100rem;
+    margin: 3px auto;
+    padding: 0 2rem 2rem;
+}
+
+.heading {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    padding: 3.5rem 0;
+    color: #231b1b;
+    margin-top: 23%;
+}
+
+.heading span {
+    display: block;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    /* Compensate for excess margin on outer gallery flex items */
+    margin: -1rem -1rem;
+}
+
+.gallery-item {
+    /* Minimum width of 24rem and grow to fit available space */
+    flex: 1 0 24rem;
+    /* Margin value should be half of grid-gap value as margins on flex items don't collapse */
+    margin: 1rem;
+    /* box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4); */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    overflow: hidden;
+    width:100%;
+    border-radius: 10%;
+  
+}
+
+.gallery-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 450ms ease-in-out;
+}
+
+.gallery-image{
+    transform: scale(1.5);
+  
+}
+
+/*
+
+The following rule will only run if your browser supports CSS grid.
+
+Remove or comment-out the code block below to see how the browser will fall-back to flexbox styling. 
+
+*/
+
+@supports (display: grid) {
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+        grid-gap: 2rem;
+    }
+
+    .gallery,
+    .gallery-item {
+        margin: 0;
+    }
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .social_icon, footer .menu {
+  position: relative;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  margin: 10px 0;
+}
+
+footer .social_icon li, footer .menu li {
+  list-style: none;
+}
+footer .social_icon li a {
+  font-size: 2em;
+  color: #ccc;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+footer .social_icon li a:hover {
+  transform: translateY(-15px);
+  color: blue;
+}
+
+footer .menu li a {
+  font-size: 1.2em;
+  color: #ccc;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+}
+footer .menu li a:hover {
+  opacity: 1;
+  color: #fff;
+  transform: translateY(-5px);
+}
+footer p {
+  color : #eee;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+/*wave and animation*/
+footer .wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(https://i.ibb.co/rZt4Nhg/wave.png);
+  background-size: 1000px 100px;
+}
+
+footer .wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWave 4s linear infinite;
+}
+
+footer .wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animateWave_02 4s linear infinite;
+}
+footer .wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 0;
+  animation: animateWave 3s linear infinite;
+}
+
+footer .wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animateWave_02 3s linear infinite;
+}
+
+@keyframes animateWave {
+  0%{
+    background-position-x: 1000px; 
+  }
+  100%{
+    background-position-x: 0px; 
+  }
+}
+
+@keyframes animateWave_02 {
+  0%{
+    background-position-x: 0px; 
+  }
+  100%{
+    background-position-x: 1000px; 
+  }
+}
+.svg-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  
+}
+
+svg path {
+  transition: 0.1s;
+}
+
+svg:hover path {
+  d: path("M 800 300 Q 400 250 0 300 L 0 0 L 800 0 L 800 300 Z");
+}
+
+header p {
+  font-weight:35px;
+  color:#ccc;
+  margin: 0 auto;
+}
+header h1{
+  color:white;
+  font-size: 28px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: underline 4px white;
+  margin-bottom: 2%;
+}
+header {
+  color: #fff;
+  padding-top: 10vw;
+  padding-bottom: 30vw;
+  text-align: center;
+}
