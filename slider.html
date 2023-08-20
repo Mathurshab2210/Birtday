@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>🎂 Birthday slide</title>
+    <link rel="stylesheet" href="./css/slider.css">
+	<link rel="shortcut icon" type="image/jpg" href="./images/fav.jpg" sizes="24x24"/>
+
+</head>
+
+<body>
+    <audio id="loopingAudio" controls loop>
+        <source src="./audio/happy-birthday-fantasy-bells-2777.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="carousel">
+	<div class="carousel-item">
+		<div class="carousel-box">
+			<div class="title">AngelFace</div>
+			<div class="num">01</div>
+			<img src="./slider_img/20230325_113556.jpg" />
+		</div>
+	</div>
+
+	<div class="carousel-item">
+		<div class="carousel-box">
+			<div class="title">SnuggleBug</div>
+			<div class="num">02</div>
+			<img src="./slider_img/20230503_154424.jpg" />
+		</div>
+	</div>
+
+	<div class="carousel-item">
+		<div class="carousel-box">
+			<div class="title">HoneyBun</div>
+			<div class="num">03</div>
+			<img
+				src="./slider_img/20230512_215643.jpg"
+			/>
+		</div>
+	</div>
+
+	<div class="carousel-item">
+		<div class="carousel-box">
+			<div class="title">BunnyBoo</div>
+			<div class="num">04</div>
+			<img src="./slider_img/20230512_221938.jpg" />
+		</div>
+	</div>
+
+	<div class="carousel-item">
+		<div class="carousel-box">
+			<div class="title">GlitterGoddess
+
+
+
+            </div>
+			<div class="num">05</div>
+			<img src="./slider_img/IMG_20211205_121842.jpg" />
+		</div>
+	</div>
+
+	<div class="carousel-item">
+		<div class="carousel-box">
+			<div class="title">SweetCheeks</div>
+			<div class="num">06</div>
+			<img src="./slider_img/IMG_20210412_204706.jpg" />
+		</div>
+	</div>
+
+	<div class="carousel-item">
+		<div class="carousel-box">
+			<div class="title">CutiePatootie</div>
+			<div class="num">07</div>
+			<img src="./slider_img/Snapchat-1383209795.jpg" />
+		</div>
+	</div>
+
+	<div class="carousel-item">
+		<div class="carousel-box">
+			<div class="title">Buttercup</div>
+			<div class="num">08</div>
+			<img src="./slider_img/Snapchat-51189950.jpg" />
+		</div>
+	</div>
+
+	<div class="carousel-item">
+		<div class="carousel-box">
+			<div class="title">Starshine </div>
+			<div class="num">09</div>
+			<img src="./slider_img/Snapchat-561654054.jpg" />
+		</div>
+	</div>
+	<div class="carousel-item">
+		<div class="carousel-box">
+			<div class="title">BFFQueen</div>
+			<div class="num">10</div>
+			<img src="./slider_img/Snapchat-964532590.jpg" />
+		</div>
+	</div>
+</div>
+
+<div class="layout">
+	<div class="box">Wishing my girl bestie<br />the happiest birthday ever! <br />You make life brighter with your friendship. Love you to bits! 🎂🎉</div>
+</div>
+
+<a href="index.html"  class="logo"><i class="fas fa-home">RS</i></a>
+
+
+
+
+    <script>
+        /*--------------------
+Vars
+--------------------*/
+let progress = 50
+let startX = 0
+let active = 0
+let isDown = false
+
+/*--------------------
+Contants
+--------------------*/
+const speedWheel = 0.02
+const speedDrag = -0.1
+
+/*--------------------
+Get Z
+--------------------*/
+const getZindex = (array, index) => (array.map((_, i) => (index === i) ? array.length : array.length - Math.abs(index - i)))
+
+/*--------------------
+Items
+--------------------*/
+const $items = document.querySelectorAll('.carousel-item')
+const $cursors = document.querySelectorAll('.cursor')
+
+const displayItems = (item, index, active) => {
+  const zIndex = getZindex([...$items], active)[index]
+  item.style.setProperty('--zIndex', zIndex)
+  item.style.setProperty('--active', (index-active)/$items.length)
+}
+
+/*--------------------
+Animate
+--------------------*/
+const animate = () => {
+  progress = Math.max(0, Math.min(progress, 100))
+  active = Math.floor(progress/100*($items.length-1))
+  
+  $items.forEach((item, index) => displayItems(item, index, active))
+}
+animate()
+
+/*--------------------
+Click on Items
+--------------------*/
+$items.forEach((item, i) => {
+  item.addEventListener('click', () => {
+    progress = (i/$items.length) * 100 + 10
+    animate()
+  })
+})
+
+/*--------------------
+Handlers
+--------------------*/
+const handleWheel = e => {
+  const wheelProgress = e.deltaY * speedWheel
+  progress = progress + wheelProgress
+  animate()
+}
+
+const handleMouseMove = (e) => {
+  if (e.type === 'mousemove') {
+    $cursors.forEach(($cursor) => {
+      $cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
+    })
+  }
+  if (!isDown) return
+  const x = e.clientX || (e.touches && e.touches[0].clientX) || 0
+  const mouseProgress = (x - startX) * speedDrag
+  progress = progress + mouseProgress
+  startX = x
+  animate()
+}
+
+const handleMouseDown = e => {
+  isDown = true
+  startX = e.clientX || (e.touches && e.touches[0].clientX) || 0
+}
+
+const handleMouseUp = () => {
+  isDown = false
+}
+
+/*--------------------
+Listeners
+--------------------*/
+document.addEventListener('mousewheel', handleWheel)
+document.addEventListener('mousedown', handleMouseDown)
+document.addEventListener('mousemove', handleMouseMove)
+document.addEventListener('mouseup', handleMouseUp)
+document.addEventListener('touchstart', handleMouseDown)
+document.addEventListener('touchmove', handleMouseMove)
+document.addEventListener('touchend', handleMouseUp)
+const audio = document.getElementById('loopingAudio');
+    // window.onload = function () {
+    //         audio.play();
+    //     };
+        
+        // Play the audio when the page is fully loaded
+       
+        // Play the audio
+        audio.play();
+  
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Memories</title>
+  <link rel="stylesheet" href="./css/mem.css">
+  <link rel="shortcut icon" type="image/jpg" href="./images/fav.jpg" sizes="24x24"/>
+</head>
+<body>
+  
+    <button class="back-button" onclick="goToDesiredLink()">&#8592; Back</button>
+    <center><span id="heading">Memories</span></center> <br><br> <br><br>
+ <center> <div id="cards-container">
+    <!-- Cards will be dynamically added here -->
+  </div></center>
+  <div class="horizontal-scroll2"><div class="horizontal-scroll"></div></div>
+  <audio id="loopingAudio" controls loop>
+    <source src="./audio/happy-birthday-to-you-high-school-party-94107.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<script src="./js/mem.js"></script>
+</body>
+</html>
